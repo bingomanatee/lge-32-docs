@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="106px" height="42px" viewBox="0 0 106 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>next-button</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-34.1%" y="-75.0%" width="168.2%" height="250.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="5" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <linearGradient x1="14.1904904%" y1="50.5446306%" x2="85.8907503%" y2="50.5447567%" id="linearGradient-2">
+            <stop stop-color="#F1F1F1" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#DEDEDE" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-23.7%" y="-78.3%" width="147.4%" height="256.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="6" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="next-button" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <ellipse id="Oval" fill="#FFFFFF" filter="url(#filter-1)" cx="69" cy="21" rx="22" ry="10"></ellipse>
+        <ellipse id="Oval" fill="url(#linearGradient-2)" filter="url(#filter-3)" cx="48" cy="20.5" rx="38" ry="11.5"></ellipse>
+        <polygon id="Triangle" fill="#000000" transform="translate(78.000000, 20.700000) rotate(90.000000) translate(-78.000000, -20.700000) " points="78 6 92 35.4 64 35.4"></polygon>
+    </g>
+</svg>

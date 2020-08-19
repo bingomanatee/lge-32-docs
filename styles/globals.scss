@@ -1,0 +1,41 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+  Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  background-color: #242424;
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+article {
+  font-family: 'Oswald', sans-serif;
+  padding: 3rem;
+  color: black;
+  font-size: 1.5rem;
+  > h1, > h2,  > p, > ol > li, > ul > li {
+    text-shadow: 1px 1px 30px rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+  }
+
+> h1, > h2, h3 {
+  text-shadow: 1px 1px 30px rgba(200, 225, 255, 2);
+  font-weight: 800;
+}
+}

@@ -1,0 +1,47 @@
+.container {
+    display: grid;
+    grid-template-rows: 1rem 116px auto;
+    overflow: hidden;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.headerHomeImage {
+    width: 8rem;
+    height: 8rem;
+}
+
+.backToHome {
+    margin: 3rem 0 0;
+}
+
+.header-logo {
+    flex: 0;
+    flex-basis: 116px;
+}
+
+.header-spacer {
+    flex: 0;
+    flex-basis: 3rem;
+}
+
+.header-title {
+    flex-grow: 1;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h1 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 4rem;
+        color: black;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-shadow: 5px 1px 30px rgba(255, 255, 255, 0.25);
+    }
+}
