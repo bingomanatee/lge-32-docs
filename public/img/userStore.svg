@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="14 -14 903.284 563" width="903.284" height="563">
+  <defs>
+    <clipPath id="artboard_clip_path">
+      <path d="M 14 -14 L 917.284 -14 L 917.284 549 L 14 549 Z"/>
+    </clipPath>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Bold"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="StickArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="#0432ff">
+      <g>
+        <path d="M 8 0 L 0 0 M 0 -3 L 8 0 L 0 3" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Helvetica" font-size="12" units-per-em="1000" underline-position="-75.68359" underline-thickness="49.316406" slope="0" x-height="532.22656" cap-height="719.7266" ascent="770.0195" descent="-229.98047" font-weight="700">
+      <font-face-src>
+        <font-face-name name="Helvetica-Bold"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica" font-size="12" units-per-em="1000" underline-position="-75.68359" underline-thickness="49.316406" slope="0" x-height="522.9492" cap-height="717.28516" ascent="770.0195" descent="-229.98047" font-weight="400">
+      <font-face-src>
+        <font-face-name name="Helvetica"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Bold"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.17.3\n2020-09-12 20:23:01 +0000</metadata>
+  <g id="userForm" stroke-dasharray="none" fill="none" stroke="none" fill-opacity="1" stroke-opacity="1">
+    <title>userForm</title>
+    <rect fill="white" x="14" y="-14" width="903.284" height="563"/>
+    <g id="userForm_flat_stuff" clip-path="url(#artboard_clip_path)">
+      <title>flat stuff</title>
+      <g id="Line_91">
+        <line x1="678.204" y1="198" x2="45" y2="197.21958" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Line_97">
+        <line x1="678.204" y1="288" x2="45" y2="288" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_92">
+        <rect x="520.63837" y="183.63817" width="91.472" height="28.447998" fill="white"/>
+        <text transform="translate(525.63837 188.63817)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="781597e-18" y="15">await result</tspan>
+        </text>
+      </g>
+      <g id="Graphic_98">
+        <rect x="563.70675" y="273.776" width="49.712" height="28.447998" fill="white"/>
+        <text transform="translate(568.70675 278.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">catch</tspan>
+        </text>
+      </g>
+      <g id="Graphic_36">
+        <rect x="522" y="90" width="216" height="252" fill="#5d8d8e" fill-opacity=".30115582"/>
+        <path d="M 522 90 L 738 90 L 738 342 L 522 342 Z" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_80"/>
+      <g id="Graphic_82">
+        <circle cx="577.5" cy="131" r="9.00001438111706" fill="white"/>
+        <circle cx="577.5" cy="131" r="9.00001438111706" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_88">
+        <circle cx="576" cy="162" r="9.00001438111704" fill="white"/>
+        <circle cx="576" cy="162" r="9.00001438111704" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_93">
+        <circle cx="576" cy="234" r="9.00001438111706" fill="white"/>
+        <circle cx="576" cy="234" r="9.00001438111706" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_99">
+        <circle cx="576" cy="315.5" r="9.00001438111706" fill="white"/>
+        <circle cx="576" cy="315.5" r="9.00001438111706" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_106">
+        <text transform="translate(235.824 354.552)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="700" fill="black" x="6679102e-19" y="12">NOT_LOGGED_IN</tspan>
+        </text>
+      </g>
+    </g>
+    <g id="userForm_Layer_1" clip-path="url(#artboard_clip_path)">
+      <title>Layer 1</title>
+      <g id="Graphic_81">
+        <text transform="translate(402.5 127)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="7132073e-19" y="15">“”</tspan>
+        </text>
+      </g>
+      <g id="Line_83">
+        <line x1="568.5043" y1="131.27942" x2="431.02723" y2="135.54962" marker-end="url(#StickArrow_Marker)" stroke="#0432ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_85">
+        <text transform="translate(160.12 131)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="700" fill="black" x="0" y="12">LOGGING_IN</tspan>
+        </text>
+      </g>
+      <g id="Graphic_100">
+        <text transform="translate(145.824 302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="700" fill="black" x="6679102e-19" y="12">NOT_LOGGED_IN</tspan>
+        </text>
+      </g>
+      <g id="Graphic_101">
+        <text transform="translate(152.604 248)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="700" fill="black" x="14210855e-21" y="12">LOGGED_IN</tspan>
+        </text>
+      </g>
+      <g id="Graphic_102">
+        <text transform="translate(383 318.552)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="24158453e-20" y="15">error.message</tspan>
+        </text>
+      </g>
+      <g id="Graphic_2">
+        <rect x="235" y="423.5" width="81" height="36" fill="#f5ffaa"/>
+        <text transform="translate(240 434.5)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" font-weight="700" fill="black" x="4.4921875" y="11">value: Map</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <ellipse cx="64.75" cy="360" rx="46.7500747019136" ry="18.0000287622341" fill="#ffd800"/>
+        <text transform="translate(32.35 353)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" font-weight="400" fill="black" x="20.728127" y="11">user</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <ellipse cx="180" cy="360" rx="36.0000575244683" ry="18.0000287622341" fill="#ffd800"/>
+        <text transform="translate(156.2 353)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" font-weight="400" fill="black" x="7.792187" y="11">status</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <ellipse cx="433.75" cy="360" rx="46.7500747019137" ry="18.0000287622341" fill="#ffd800"/>
+        <text transform="translate(401.35 353)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" font-weight="400" fill="black" x="6.390236" y="11">loginError</tspan>
+        </text>
+      </g>
+      <g id="Line_7">
+        <path d="M 275.5 423.5 L 275.5 405 L 64.75 405 L 64.75 378" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_8">
+        <path d="M 275.5 423.5 L 275.5 405 L 180 405 L 180 378" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_9">
+        <path d="M 275.5 423.5 L 275.5 405 L 433.75 405 L 433.75 378" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_51">
+        <line x1="455.5" y1="441.5" x2="548.1" y2="378" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_50">
+        <path d="M 565.2 360 L 702 360 L 667.8 396 L 531 396 Z" fill="#a6ff62"/>
+        <path d="M 565.2 360 L 702 360 L 667.8 396 L 531 396 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(570.2 371)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" font-weight="700" fill="black" x="0" y="11">register(username, password)</tspan>
+        </text>
+      </g>
+      <g id="Graphic_67">
+        <text transform="translate(422.082 1.0358887)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="0" y="16">Login State</tspan>
+        </text>
+      </g>
+      <g id="Graphic_68">
+        <rect x="235.5" y="491" width="81" height="36" fill="#f5ffaa"/>
+        <text transform="translate(240.5 502)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" font-weight="700" fill="black" x="8.154297" y="11">userState</tspan>
+        </text>
+      </g>
+      <g id="Line_69">
+        <line x1="275.5" y1="459.5" x2="276" y2="491" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_70">
+        <rect x="374.5" y="423.5" width="81" height="36" fill="#f5ffaa"/>
+        <text transform="translate(379.5 434.5)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" font-weight="700" fill="black" x="14.49414" y="11">actions</tspan>
+        </text>
+      </g>
+      <g id="Line_71">
+        <line x1="276" y1="491" x2="415" y2="459.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_86">
+        <path d="M 568.70144 132.8986 C 546.3633 137.44723 483.10185 148.71955 397.5 150.448 C 339.8945 151.61115 286.66425 148.15966 249.6161 144.6983" marker-end="url(#StickArrow_Marker)" stroke="#0432ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_87">
+        <path d="M 807.2533 201.86712 C 788.34375 198 795.8844 165.4452 826.0493 171 C 828.848 160.17192 863.9258 161.92944 863.6964 171 C 885.6913 159.39864 913.7993 182.53152 894.946 194.13288 C 917.5691 199.75752 894.6605 230.06232 876.0938 225 C 874.6078 233.43768 841.4161 236.3904 838.5028 225 C 819.7079 237.1644 780.5176 218.46096 807.2533 201.86712 Z" fill="white"/>
+        <path d="M 807.2533 201.86712 C 788.34375 198 795.8844 165.4452 826.0493 171 C 828.848 160.17192 863.9258 161.92944 863.6964 171 C 885.6913 159.39864 913.7993 182.53152 894.946 194.13288 C 917.5691 199.75752 894.6605 230.06232 876.0938 225 C 874.6078 233.43768 841.4161 236.3904 838.5028 225 C 819.7079 237.1644 780.5176 218.46096 807.2533 201.86712 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(814.55 188.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="7.654001" y="15">firebase</tspan>
+        </text>
+      </g>
+      <g id="Line_89">
+        <line x1="584.92404" y1="163.17037" x2="787.2113" y2="189.69985" marker-end="url(#StickArrow_Marker)" stroke="#0432ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_90">
+        <rect x="640.9683" y="155.24251" width="77.32" height="40.696167" fill="white"/>
+        <text transform="translate(645.9683 160.24251)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="700" fill="black" x="1.668" y="12">(username, </tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="700" fill="black" x="3.888" y="27.348083">password)</tspan>
+        </text>
+      </g>
+      <g id="Line_94">
+        <line x1="804.072" y1="204.08891" x2="594.74" y2="231.5423" marker-end="url(#StickArrow_Marker)" stroke="#0432ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_95">
+        <line x1="567.0005" y1="234.09473" x2="115.37145" y2="238.84888" marker-end="url(#StickArrow_Marker)" stroke="#0432ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_96">
+        <text transform="translate(59 230)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="7851497e-19" y="15">{user}</tspan>
+        </text>
+      </g>
+      <g id="Line_103">
+        <line x1="567.033" y1="316.27263" x2="498.91945" y2="322.1416" marker-end="url(#StickArrow_Marker)" stroke="#0432ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_104">
+        <line x1="567.00105" y1="315.36186" x2="262.05083" y2="310.6805" marker-end="url(#StickArrow_Marker)" stroke="#0432ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_105">
+        <path d="M 593.6526 231.6849 C 593.6526 231.6849 547.06846 246.65176 432 253.448 C 361.44293 257.61528 285.48106 257.50897 237.27085 256.80316" marker-end="url(#StickArrow_Marker)" stroke="#0432ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_107">
+        <path d="M 565.2 405 L 702 405 L 667.8 441 L 531 441 Z" fill="#a6ff62"/>
+        <path d="M 565.2 405 L 702 405 L 667.8 441 L 531 441 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(570.2 416)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" font-weight="700" fill="black" x="0" y="11">signIn(username, password)</tspan>
+        </text>
+      </g>
+      <g id="Line_108">
+        <line x1="455.5" y1="441.5" x2="548.1" y2="423" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

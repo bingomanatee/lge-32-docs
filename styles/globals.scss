@@ -2,12 +2,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
   Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
-  background-color: #242424;
+  background-color: #707c7d;
   color: white;
 }
 
@@ -24,18 +23,121 @@ a:hover {
   text-decoration: underline;
 }
 
+ul, ol {
+  margin: 0;
+  padding: 0;
+  margin-top: 0.5rem;
+  list-style: none;
+  font-weight: 400
+}
+
+li > b {
+  font-weight: 600;
+}
+
+ol {
+  counter-reset:mycounter;
+}
+ol > li {
+  position:relative;
+  margin-left: 4rem;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+ol > li:before {
+  content:counter(mycounter);
+  counter-increment:mycounter;
+  font-size: 1rem;
+  font-weight: 600;
+  position:absolute;
+  top: 0.5rem;
+  left: -2.5rem;
+  width:25px;
+  height:25px;
+  line-height:25px;
+  border-radius:50%;
+  color: black;
+  background:goldenrod;
+  text-align:center;
+}
+
+ul > li {
+  position:relative;
+  margin-left: 4rem;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-weight: 400;
+}
+ul > li:before {
+  content: "\1F449";
+  font-size: 1rem;
+  font-weight: 400;
+  position:absolute;
+  top: 0.333rem;
+  left: -2rem;
+  width:25px;
+  height:25px;
+  line-height:25px;
+  border-radius:50%;
+  background: rgba(0.0,0,0.333);
+  text-align:center;
+}
+
 article {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 500;
   padding: 3rem;
   color: black;
-  font-size: 1.5rem;
-  > h1, > h2,  > p, > ol > li, > ul > li {
-    text-shadow: 1px 1px 30px rgba(255, 255, 255, 0.75);
+  font-size: 1.33rem;
+  > p, > ol > li, > ul > li {
+    font-family: 'Roboto Slab', sans-serif;
+    text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.5),
+    2px 2px 100px rgba(255, 255, 255, 1),
+    2px 2px 50px rgba(255, 255, 255, 1);
     font-weight: 500;
   }
 
-> h1, > h2, h3 {
-  text-shadow: 1px 1px 30px rgba(200, 225, 255, 2);
+> h1, > h2, > h3 {
+  font-family: Oswald, 'Roboto Slab', sans-serif;
+  text-shadow: 2px 2px 2.5rem rgb(255, 255, 255),  0 0 0.5rem rgba(182, 209, 240, 0.5);
+  font-size: 2rem;
+  line-height: 115%;
   font-weight: 800;
 }
+  > h1 {
+    text-transform: uppercase;
+  }
+  > h3 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 600;
+  }
 }
+
+.diagram {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2rem;
+}
+
+i:before, i:after, b:before, b:after, a:before, a:after,
+code:before, code:after
+{
+  content: " "
+}
+
+code {
+  color: darkmagenta;
+  font-weight: 600;
+}
+
+.framedImage {
+  border: 5px solid white;
+  margin: 4rem;
+}
+
+.framedImage__right {
+  float: right;
+}
+
+@import "prism.css";

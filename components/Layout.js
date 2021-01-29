@@ -1,12 +1,15 @@
-import Head       from 'next/head'
-import styles     from './layout.module.scss'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
-
+import Head          from 'next/head'
+import styles        from './layout.module.scss'
+import utilStyles    from '../styles/utils.module.css'
+import Link          from 'next/link'
+import Header        from '../components/Header';
+import { useRouter } from "next/router";
 const name = 'Your Name'
 export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout({ children, home }) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -26,14 +29,15 @@ export default function Layout({ children, home }) {
       </Head>
     <div className={styles.container}>
       <div>&nbsp;</div>
-      <header className={styles.header}>
-        <div className={styles['header-spacer']}>&nbsp;</div>
-        <div className={styles['header-logo']}>
+      <Header onClick={() => router.push('/')}>
+        <div className="spacer">&nbsp;</div>
+        <div className="logo">
           <img src="/img/logo.png" />
         </div>
-        <div className={styles['header-title']}><h1>Looking Glass Engine 3.3</h1></div>
-
-      </header>
+        <div className="title">
+          <h1>Looking Glass Engine 3.3</h1>
+        </div>
+      </Header>
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
