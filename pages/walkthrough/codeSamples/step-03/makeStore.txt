@@ -1,0 +1,32 @@
+import {
+  ValueMapStream,
+  addActions
+} from "@wonderlandlabs/looking-glass-engine";
+import fieldStore from "./fieldStore";
+import mapToObj from "./mapToObj";
+
+export default () => {
+  const lStream = addActions(
+    new ValueMapStream({
+      username: { fieldValue: "", touched: false, error: "" }, // these are placeholders;
+      password: { fieldValue: "", touched: false, error: "" }, // will be replaced by fieldStores
+      submitState: "entering"
+    }),
+    {
+      submit(store) {
+        store.do.setSubmitState("submitting");
+        setTimeout(() => {
+          store.do.setSubmitState("recieved");
+        }, 1500);
+      },
+      canSubmit(store) {
+        return [
+          store.fieldSubjects.get("username"),
+          store.fieldSubjects.get("password")
+        ].reduce((can, stream) => {
+          return can && stream.do.isValid();
+        }, true);
+      }
+    }
+  );
+...

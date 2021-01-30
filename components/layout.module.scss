@@ -1,8 +1,26 @@
 .container {
-    display: grid;
-    grid-template-rows: 1rem 116px auto;
-    overflow: hidden;
-    height: 100%;
+    padding-left: 0;
+    position: relative;
+}
+
+.container-accent {
+    position: absolute;
+    width: 100%;
+    top: 76px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    z-index: -100;
+    background: #FE7500;
+}
+.container-head {
+    background: #A741A1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 77px;
+    top: 0;
+    z-index: -90;
 }
 
 .header {
@@ -11,10 +29,18 @@
     align-items: stretch;
 }
 
-
-
 .backToHome {
-    margin: 3rem 0 0;
+    margin: 3rem 2rem;
+    text-align: center;
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 500;
+    padding: 3rem;
+    font-size: 1.33rem;
+}
+
+.backToHome a {
+    text-shadow: none;
+    color: aqua !important;
 }
 
 .header-logo {

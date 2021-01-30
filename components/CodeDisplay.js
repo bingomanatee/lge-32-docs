@@ -15,7 +15,7 @@ export default ({children}) => {
       padding={10}
       style={{
         fontFamily: '"Fira code", "Fira Mono", monospace',
-        fontSize: '1rem',
+        fontSize: '0.8rem',
         color: 'white'
       }} value={text}>
     </Code>

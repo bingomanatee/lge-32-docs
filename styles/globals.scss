@@ -6,8 +6,12 @@ body {
   Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
-  background-color: #707c7d;
   color: white;
+}
+
+$offset:  76px;
+body {
+  background-image: linear-gradient(180deg, #A741A1 0,  #A741A1 $offset/2, #6C2291  $offset -32px, #3F0B7D  $offset + 60px, #200737 $offset + 120px);
 }
 
 * {
@@ -87,22 +91,27 @@ article {
   font-family: 'Roboto Slab', sans-serif;
   font-weight: 500;
   padding: 3rem;
-  color: black;
+  color: white;
   font-size: 1.33rem;
   > p, > ol > li, > ul > li {
     font-family: 'Roboto Slab', sans-serif;
-    text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.5),
-    2px 2px 100px rgba(255, 255, 255, 1),
-    2px 2px 50px rgba(255, 255, 255, 1);
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5),
+    2px 2px 100px rgba(0, 0, 0, 1),
+    2px 2px 50px rgba(0, 0, 0, 1);
     font-weight: 500;
   }
-
+a {
+  color: aqua;
+}
 > h1, > h2, > h3 {
   font-family: Oswald, 'Roboto Slab', sans-serif;
   text-shadow: 2px 2px 2.5rem rgb(255, 255, 255),  0 0 0.5rem rgba(182, 209, 240, 0.5);
   font-size: 2rem;
   line-height: 115%;
   font-weight: 800;
+  code {
+    font-family: Oswald, 'Roboto Slab', sans-serif;
+  }
 }
   > h1 {
     text-transform: uppercase;
@@ -127,8 +136,9 @@ code:before, code:after
 }
 
 code {
-  color: darkmagenta;
-  font-weight: 600;
+  color: lightgreen;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
 .framedImage {
@@ -141,3 +151,17 @@ code {
 }
 
 @import "prism.css";
+
+.link {
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 500;
+  padding: 3rem;
+  font-size: 1rem;
+    text-shadow: none;
+    color: aqua;
+  &:hover {
+    .text {
+      color: darkcyan;
+    }
+  }
+}

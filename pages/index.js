@@ -18,31 +18,37 @@ export default function Home() {
        <h2>The Problematic status quo</h2>
        <p>All of these systems share a set of features which make control systems difficult to write:</p>
        <ul>
-         <li>It is difficult to understand the system as a whole</li>
-         <li>Changes are difficult to chain because they are generally not synchronous </li>
-         <li>Observing sub-sets of states is burdensome</li>
-         <li>The action format is overly ritualistic</li>
-         <li>There is no mechanic to throttle large update batches</li>
-         <li>Testing Redux-controlled components is difficult or impossible </li>
+         <li>Store systems tend to span multiple files making overall comprehension tiresome</li>
+         <li>Changing values are in general delayed making prodedures difficult to write or comprehend</li>
+         <li>Transporting state to React modues is elaborate</li>
+         <li>The action format an incredibly ritualized interperatation of basic functional methodology</li>
+         <li>Filtering input values, managing thrown errors, and observing change on Redux stores is involved
+         and difficult</li>
+         <li>There is no mechanic to throttle large update batches; every action automatically triggers a
+         broadcast update.</li>
+         <li>Unit Testing Redux-controlled components is difficult or impossible </li>
        </ul>
-       <h2>Redux is part of the solution</h2>
-       <p>Redux has many solutions to these problems but it is so open-ended and profuse that it is difficult to
+       <h2>RXJS is part of the solution</h2>
+       <p>RXJS has many solutions to these problems but it is so open-ended and profuse that it is difficult to
        know what steps you need to do do generate useful stores. Also, adding <i>methods</i> to a stream
        are not really part of the paradigm. </p>
-       <h3>The Looking Glass Paradigm</h3>
+       <h2>The Looking Glass Paradigm</h2>
        <ul>
-         <li>Looking glass is <b>wholly synchronous. </b> you can set a property of a looking glass store and immediately
-           see that value resolved; even if you do so inside of a method</li>
+         <li>Looking glass is <b>wholly synchronous.</b> you can set a property of a looking glass store and immediately
+           find that value has been set in the store; even if you do so inside of a method. (it may of course take some time
+         to percolate into the DOM because of Redux's draw cycle, but anyone with access to the store can find its
+         current, accurate values.</li>
          <li>Looking glass engine is <b>wholly testable.</b> As an object model the stores can be tested using standard
-           OOP test mechanics. As a localized item, one can always simply accept a test-provided store as a parameter
-           to execute expected patterns inside a tested component or use context to inject one into deeper components.
+           OOP test mechanics. the store is generally passed wholesale as a property, so you can always construct a
+           mocked version of that store when testing client components.
          </li>
          <li>
            LGE store fields can be <b>filtered and sanitized.</b> You can either outright reject bad values,
-           or you can interrupt updates and force any input to conform to desired specifications.
+           or you can interrupt updates and force any input to conform to desired specifications (round numbers,
+           filter out unwanted characters in strings, enforce range bounds, etc.)
          </li>
          <li>
-           LGE gives you all the power of Redux: throttling, distinct values, debounces and any other
+           LGE gives you all the power of RXJS: throttling, distinct values, debounces and any other
            data control mechanics (including post-fixing immutability or syncronizing indexDB or local storage with watchers)
            can be utilized with a LGE store.
          </li>
@@ -56,8 +62,16 @@ export default function Home() {
       <p>The only way to really appreciate the API is to see how
       easy it makes developing complex rigorous web apps. So lets start with a working example, using it for a Deep,
       Firebase-backed e-com shopping site. </p>
+
+       <ol>
+         <li><a href={"/walkthrough/step-01"}>A simple chart</a></li>
+         <li><a href={"/walkthrough/step-02"}>A panel editor</a></li>
+         <li><a href={"/walkthrough/step-02a"}>Adding actions to the panel editor</a></li>
+         <li><a href={"/walkthrough/step-03"}>A login form</a></li>
+       </ol>
+     <hr />
        <NextButton href={'/walkthrough/step-01'}>
-         Let's start with an example
+         The First Example
        </NextButton>
     </article>
     </Layout>

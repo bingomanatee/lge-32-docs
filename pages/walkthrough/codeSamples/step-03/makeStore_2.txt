@@ -1,0 +1,31 @@
+...
+  lStream.addFieldSubject(
+    "username",
+    fieldStore((fieldValue, stream) => {
+      if (fieldValue.length < 1) {
+        return "username muse be present";
+      } else if (!/.+@.+\..+/.test(fieldValue)) {
+        return "username must be a proper e-mail address";
+      } else {
+        return "";
+      }
+    }, "username")
+  );
+
+  lStream.addFieldSubject(
+    "password",
+    fieldStore((fieldValue, stream) => {
+      if (fieldValue.length < 1) {
+        return "password muse be present";
+      } else if (fieldValue.length < 10) {
+        return "password muse be 10 or more characters";
+      } else if (/\s/.test(fieldValue)) {
+        return "password cannot have spaces";
+      } else {
+        return "";
+      }
+    }, "password")
+  );
+
+  return lStream;
+};

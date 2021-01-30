@@ -1,0 +1,52 @@
+export default ({ index, panelStore, editingIndex }) => {
+  const [dataClone, setDataClone] = useState({
+    ...panelStore.my.panels[index]
+  });
+
+  function close() {
+    panelStore.set("editingIndex", -1);
+  }
+
+  function update(updated) {
+    if (!(panelStore.my.editingIndex === index)) return;
+    close();
+
+    if (updated && panelStore.my.panels[index]) {
+      const newPanels = [...panelStore.my.panels];
+      newPanels[index] = updated;
+      panelStore.set("panels", newPanels);
+      setDataClone(updated);
+    }
+  }
+
+  return (
+    <Form
+      value={dataClone}
+      onChange={setDataClone}
+      onSubmit={({ value }) => update(value, index)}
+    >
+      <Card pad={0} height="300px">
+        <CardHeader pad={0} background={"brand"} pad="2px 10px" justify="start">
+          <FormField name="title" htmlFor="heading-input-id" label="Heading">
+            <TextInput id="title-input-id" name="title" />
+          </FormField>
+        </CardHeader>
+        <CardBody fill pad="6px 10px" overflow="auto">
+          <FormField name="content" htmlFor="content-input-id" label="Content">
+            <TextArea id="content-input-id" name="content" />
+          </FormField>
+        </CardBody>
+        <CardFooter pad="small">
+          <Button type="submit" size="small" primary label="Submit" />
+          <Button type="reset" plain size="small" label="Reset" />
+          <Button
+            size="small"
+            onClick={close}
+          >
+            <Close label="close" size="small" onClick={() => update(false)} />
+          </Button>
+        </CardFooter>
+      </Card>
+    </Form>
+  );
+};

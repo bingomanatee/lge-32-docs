@@ -14,11 +14,11 @@ justify-content: stretch;
   }
   .text {
     text-shadow: none;
-    color: darkblue;
+    color: aqua;
   }
   &:hover {
     .text {
-    color: blue;
+    color: darkcyan;
     }
   }
 `
@@ -29,6 +29,7 @@ function SvgComponent(props) {
   function doClick() {
     if (props.href) {
       router.push(props.href);
+      window.scrollTo(0, 0);
     }
   }
   return (

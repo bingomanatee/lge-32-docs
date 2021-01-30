@@ -9,19 +9,6 @@ export default styled.header`
       align-items: center;
       display: flex; 
     }
-    
-    .logo img {
-      width: 8rem;
-      height: 8rem;
-      @media only screen and (min-width: 500px) and (max-width: 800px) {
-        width: 6rem;
-        height: 6rem;
-      }
-      @media only screen and (max-width: 500px) {
-          width: 4rem;
-          height: 4rem;
-      }
-    }
     .spacer {
       flex: 0;
       flex-basis: 3rem;

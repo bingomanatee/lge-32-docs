@@ -1,0 +1,40 @@
+import {
+  ValueMapStream,
+  addActions
+} from "@wonderlandlabs/looking-glass-engine";
+
+export default (errorTest, fieldKey) => {
+  // the stream is a manager for an individual form field.
+  const stream = addActions(
+    new ValueMapStream({ fieldValue: "", error: "", touched: false }),
+    {
+      isValid(store) {
+        return store.my.touched && !store.my.error;
+      },
+      reset(store) {
+        store.next(
+          new Map([
+            ["fieldValue", ""],
+            ["error", ""],
+            ["touched", false]
+          ])
+        );
+      }
+    }
+  );
+
+  stream.watch("fieldValue").subscribe((map) => {
+    if (!stream.my.touched && !map.get("fieldValue")) {
+      return;
+    }
+
+    const error = errorTest(map.get("fieldValue"), stream);
+    stream.do.setError(error);
+    stream.do.setTouched(true);
+  });
+
+  // this ensures that the field starts with no errors displayed,
+  // even if its value (blank at start) would ordinarily be an error.
+  stream.do.reset();
+  return stream;
+};

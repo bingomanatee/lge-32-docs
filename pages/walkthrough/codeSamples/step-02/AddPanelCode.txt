@@ -1,0 +1,31 @@
+import EditField from "./EditField";
+
+export default ({ store }) => {
+  function done() {
+    store.set("addingPanel", false);
+  }
+
+  if (!store.my.addingPanel) return "";
+  return (
+    <Layer full>
+      <Box margin="large" gap="medium" full="horizontal" align="start">
+        <Heading level="1">Add a Panel</Heading>
+        <Form
+          onSubmit={({ value }) => {
+            if (value && value.title && value.content)
+              store.set("panels", [...store.my.panels, { ...value }]);
+            done();
+          }}
+        >
+          <EditField name="title" label="title" />
+          <EditField name="content" label="Content" textArea />
+
+          <Box direction="row" gap="medium">
+            <Button type="submit" primary label="Submit" />
+            <Button label="Cancel" onClick={done} />
+          </Box>
+        </Form>
+      </Box>
+    </Layer>
+  );
+};

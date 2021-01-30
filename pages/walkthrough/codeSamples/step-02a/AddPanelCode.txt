@@ -1,0 +1,36 @@
+import React, { useState, useEffect } from "react";
+import { Layer, Button, Heading, Form, Box } from "grommet";
+import EditField from "./EditField";
+
+export default ({ store, done }) => {
+  const [addingPanel, setAddingPanel] = useState(store.my.showAddPanel);
+
+  useEffect(() => {
+    const sub = store.watch("addingPanel").subscribe((map) => {
+      setAddingPanel(map.get("addingPanel"));
+    });
+    return () => sub.unsubscribe();
+  }, [store]);
+
+  if (!addingPanel) return "";
+  return (
+    <Layer full>
+      <Box margin="large" gap="medium" full="horizontal" align="start">
+        <Heading level="1">Add a Panel</Heading>
+        <Form
+          onSubmit={({ value }) => {
+            store.do.addPanel(value);
+          }}
+        >
+          <EditField name="title" label="title" />
+          <EditField name="content" label="Content" textArea />
+
+          <Box direction="row" gap="medium">
+            <Button type="submit" primary label="Submit" />
+            <Button label="Cancel" onClick={store.do.close} />
+          </Box>
+        </Form>
+      </Box>
+    </Layer>
+  );
+};

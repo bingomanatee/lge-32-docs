@@ -1,0 +1,46 @@
+export default () => {
+  const [value, setValue] = useState(new Map());
+
+  const [panelStore, setPanelStore] = useState();
+  useEffect(() => {
+    const store = makePanelStore();
+    setPanelStore(store);
+
+    // this simply synks react's updates to the store updates
+    let sub = store.subscribe(setValue, (error) => {
+      console.log("error: ", error);
+    });
+
+    return () => sub.unsubscribe();
+  }, []);
+
+  if (!panelStore) return "";
+
+  const rows = "auto".repeat(
+    Math.max(1, Math.ceil(panelStore.my.panels.length / 4))
+  );
+
+  return (
+    <Main id="main-item" align="stretch" overflow="hidden">
+      <PanelsHeader panelStore={panelStore} />
+
+      <Box flex={1} pad="medium">
+        <Grid
+          columns={["1fr", "1fr", "1fr"]}
+          rows={rows}
+          gap="small"
+          fill="horizontal"
+        >
+          {panelStore.my.panels.map((panel, index) => (
+            <Panel
+              index={index}
+              store={panelStore}
+              key={panel.title + "-" + index}
+            />
+          ))}
+        </Grid>
+      </Box>
+      <AddPanel store={panelStore} />
+    </Main>
+  );
+};

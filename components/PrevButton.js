@@ -9,6 +9,7 @@ function PrevButton(props) {
   function doClick() {
     if (props.href) {
       router.push(props.href);
+      window.scrollTo(0, 0);
     }
   }
 

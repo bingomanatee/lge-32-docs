@@ -7,222 +7,87 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import CodeDisplay              from "../../components/CodeDisplay";
-
+import AddPanelCode from './codeSamples/step-02/AddPanelCode.txt';
+import makeStore from './codeSamples/step-02/makeStore.txt';
+import panels from './codeSamples/step-02/Panels.txt';
+import Panel from './codeSamples/step-02/Panel.txt';
+import EditPanel from './codeSamples/step-02/EditPanel.txt';
 export default () => (
   <Layout>
     <Head>
-      <title>LGE walkthrough: page 2</title>
+      <title>LGE walkthrough: page 1</title>
     </Head>
     <article>
-      <h1>Walkthrough: step two: hooking into a real Firebase auth system.</h1>
+      <h1>Walkthrough</h1>
+      <h2>Step two: A panel editor</h2>
 
-      <p>Now that we have basic flow of information locally working lets have some fun
-        and hook up a real backend lSelf: Firebase Authentication.</p>
+      <p>Next we're going to create a few sample panels and an editing suite.</p>
 
-      <p>The Firebase stuff is well documented by Google. The useful part for us is that we are creating a lSelf
-        that is NOT tied into react directly to interface with it and lSelf login state. This is one of
-        the nice features of Looking Glass -- you can have local stores that manage a web view,
-        or you can have static stores that are not tied to UI but that UI can listen to when it needs to.</p>
+      <p>this will use a <code>ValueMapStore</code>. ValueMapStores use maps to store the data - and allow us to set them on a field by field basis.</p>
 
-      <h2>The <code>userStore</code></h2>
+      <h2>The <code>ValueMapStream</code></h2>
 
-      <div className="diagram">
-        <img src="/img/userStore.svg"/>
-      </div>
-
-      <iframe src="https://codesandbox.io/embed/looking-glass-engine-login-demo-part-2-with-firebase-t84t4?fontsize=14&hidenavigation=1&theme=dark"
+      <p>A ValueMapStream is a multi-value stream; it has an internal map whose members can be stored and updated by name.</p>
+      <iframe src="https://codesandbox.io/embed/looking-glass-engine-panel-set-h83sy?fontsize=14&hidenavigation=1&theme=dark"
         style={{width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden'}}
-        title="looking glass engine - login demo part 2 - with firebase"
+        title="looking glass engine - login demo part 2 - panels"
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
       ></iframe>
 
-      <p>The userStore is actually simpler than the form; it has three fields:</p>
-      <Property>
-        <h3>
-          <code>user</code>
-        </h3>
-        <div>
-          <ul>
-            <li>can be absent</li>
-            <li>Is an object, if set</li>
-            <li>Returned by Firebase so out of our control</li>
-          </ul>
-        </div>
-        <h3><code>status</code></h3>
-        <div>
-          <ul>
-            <li>A string</li>
-            <li>starts as "not logged in"</li>
-            <li>Can be "not logged in", "logging in" or "not logged in"</li>
-          </ul>
-        </div>
-      </Property>
+      <p>The store itself we will create in a modular function. Even though the underlying store is a map, we will submit the data as an object for simplicity</p>
 
-      <p>We aren't enforcing any schema on this structure at this point.</p>
+<CodeDisplay>
+  {makeStore}
+</CodeDisplay>
 
-      <h2>A Piece of the Action</h2>
-      <p><img src={'/img/action.png'}  style={{width: 655/2, height: 624/2}} className="framedImage framedImage__right"/>
-        The actions, register and signIn, are in fact essentially identical, but they call a different firebase
-        endpoint.
-        They are asynchronous, and you don't have to freak. Unlike Redux actions, looking glass actions are completely
-        free to interact with the lSelf at their own tempo. They can call set or other actions of the lSelf to update
-        values, and can do so even across an async jump.
+      <p>The Panels page will save the store itself as a state property. We will subscribe and dump its values into another state, to keep
+        the app updating when the store updates -- but this "dump" is simply to force React to sync:.</p>
+
+      <CodeDisplay>
+        {panels}
+      </CodeDisplay>
+      <p>The keys in the store can be accessed using dot notation --- <code>{`          {panelStore.my.panels.map((panel, index) => (`}</code>.
+      Alternately you can call <code>{`panelStore.value.get('panels')`}</code> to retrieve a value in the store.
       </p>
 
-      <div style={{backgroundColor: 'black'}}>
-        <Code highlight={code => highlight(code, languages.js)}
-          padding={10}
-          style={{
-            fontFamily: '"Fira code", "Fira Mono", monospace',
-            fontSize: '1rem',
-            color: 'white'
-          }} value={`
-actions: {
-  async logIn(lSelf, username, password) {
-    lSelf.do.setLoginError("");
-    lSelf.do.setStatus(LOGGING_IN);
-    try {
-      let { user } = await firebase.doSignInWithEmailAndPassword(
-        username,
-        password
-      );
-      lSelf.do.setUser(user);
-      lSelf.do.setStatus(LOGGED_IN);
-    } catch (error) {
-      lSelf.do.setLoginError(error.message);
-      lSelf.do.setStatus(NOT_LOGGED_IN);
-    }
-  },
- //....
- }
-          `}>
-        </Code>
-      </div>
+      <h2>Adding a Panel</h2>
+      <p>Clicking "Add Panel" opens up an add item form. We pass the store directly into this container, and when the submit is complete,
+        the new panel is pushed into the store's panels. The field management and temporary values are all
+        managed by Grommet's Form API; we could (and later will) do that with stores, but for now,
+        we'll use Grommet's automated form management tags as they come.</p>
 
-      <p>Now we add actions that pass the field values into the user lSelf to login or subscribe through the userStore.</p>
+      <CodeDisplay>
+        {AddPanelCode}
+      </CodeDisplay>
 
+      <h2>Viewing the panel</h2>
+      <p>The individual panels are passed their index and the store. In this way they can
+        extract their own data for display. </p>
+      <p>They can also pass the store/index to a component displayed when their index is
+      the index for the edited panel</p>
 
-<CodeDisplay>{`
- const lStream = new ValueStoreMap(
-    {
-      username: { fieldValue: "", error: "" }, // these are placeholders;
-      password: { fieldValue: "", error: "" }, // will be replaced by fieldStores
-      canSubmit: false,
-      submitState: "entering",
-      loginError: "",
-      user: false,
-      storeSub: null
-    },
-    {
-      actions: {
-        submit(lSelf) {
-          userStore.do.logIn(
-            lSelf.my.username.fieldValue,
-            lSelf.my.password.fieldValue
-          );
-          lSelf.do.watchUser();
-        },
-        register(lSelf) {
-          userStore.do.register(
-            lSelf.my.username.fieldValue,
-            lSelf.my.password.fieldValue
-          );
-          lSelf.do.watchUser();
-        },
-        signOut(lSelf) {
-          userStore.do.signOut();
-          lSelf.do.setUser(false);
-          lSelf.do.reset();
-        },
-        clearSub(lSelf) {
-          if (lSelf.my.userSub) {
-            lSelf.my.userSub.unsubscribe();
-            lSelf.do.setUserSub(null);
-          }
-          lSelf.do.resetState();
-        },
-        resetState(lSelf) {
-          lSelf.do.setSubmitState("entering");
-          lSelf.do.setUser(false);
-          lSelf.do.setCanSubmit(false);
-          lSelf.do.setLoginError("");
-        },
-        reset(lSelf) {
-          lSelf.do.clearSub();
-          lSelf.streams.get("password").do.reset();
-          lSelf.streams.get("username").do.reset();
-          lSelf.do.resetState();
-        }
-      }
-    }
-  );
-`}</CodeDisplay>
-      <p>And we keep the field definition from the previous example:</p>
-<CodeDisplay>{`
-  lStream.addStream(
-    "username",
-    fieldStore((fieldValue, stream) => {
-      if (fieldValue.length < 1) {
-        stream.do.setError("username muse be present");
-      } else if (!/.+@.+\\..+/.test(fieldValue)) {
-        stream.do.setError("username must be a proper e-mail address");
-      } else {
-        stream.do.setError("");
-      }
-    })
-  );
+      <CodeDisplay>
+        {Panel}
+      </CodeDisplay>
 
-  lStream.addStream(
-    "password",
-    fieldStore((fieldValue, stream) => {
-      if (fieldValue.length < 1) {
-        stream.do.setError("password muse be present");
-      } else if (fieldValue.length < 10) {
-        stream.do.setError("password muse be 10 or more characters");
-      } else if (/\\s/.test(fieldValue)) {
-        stream.do.setError("password cannot have spaces");
-      } else {
-        stream.do.setError("");
-      }
-    })
-  );
-          `}
-        </CodeDisplay>
-      <p>Also, we have the loginStore listen to the userStore and update select properties.
-        Separate watching reduces unnecessary updates. </p>
+      <h2>Editing a Panel</h2>
+      <p>If the editingIndex is that of the current panel the editing form is displayed. We are again using
+      Grommet's form utilities to mange the edited update. Upon completion, we reset the editingIndex
+      to -1 to point to no current panel. In this case, the initial panel data is cloned (by useState)
+      and no observation of state past that point is needed; the update is fed through to the store
+      when the editing is complete; or alternately the editing index is reset if the user cancels.</p>
 
-<CodeDisplay>{`
-  const userWatch = userStore.watch("user").subscribe((map) => {
-    lStream.do.setUser(map.get("user"));
-  });
+      <CodeDisplay>
+        {EditPanel}
+      </CodeDisplay>
 
-  const errorWatch = userStore.watch("loginError").subscribe((map) => {
-    const loginError = map.get("loginError");
-    if (lStream.my.loginError !== loginError) {
-      if (loginError) {
-        lStream.do.resetState();
-      }
-      lStream.do.setLoginError(loginError);
-    }
-  });
+      <p>This code lacks any ornament for reducers or actions; the proerties are set or updated on the fly
+        by the <code>store.set(key, value)</code> method. However there is another tool we can use to further
+      compress the code into a more managed system: store actions</p>
 
-  lStream.subscribe(
-    () => {},
-    () => {},
-    () => {
-      errorWatch.unsubscribe();
-      statusWatch.unsubscribe();
-      userWatch.unsubscribe();
-    }
-  );
-          `}</CodeDisplay>
-
-      <p>note because the userStore has a long lifespan and the loginStore might not, we turn off the listening relationship
-      when the loginStore is completed.</p>
-
-      <NextButton href={'/walkthrough/step-03'} prevHref={'/walkthrough/step-01'}>
-        Now that we're in lets have some fun
+      <NextButton href={'/walkthrough/step-02a'} prevHref={'/walkThrough/step-02'}>
+        Let's add actions
       </NextButton>
     </article>
   </Layout>)

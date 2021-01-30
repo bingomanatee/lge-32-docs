@@ -1,0 +1,62 @@
+import { Card, CardBody, CardFooter, CardHeader, Text } from "grommet";
+import EditPanel from "./EditPanel";
+import CardHead from "./CardHead";
+
+import React, { useEffect, useState } from "react";
+import { Edit, Close } from "grommet-icons";
+
+export default ({ index, store: panelStore }) => {
+  const [editingIndex, setEditingIndex] = useState(false);
+  const [data, setData] = useState(panelStore.my.panels[index]);
+
+  useEffect(() => {
+    const sub = panelStore.watch('editingIndex').subscribe((map) => {
+      if (map.get("editingIndex") !== editingIndex) {
+        setEditingIndex(map.get("editingIndex"));
+      }
+    });
+    return () => sub.unsubscribe();
+  }, [panelStore]);
+
+  function deleteMe() {
+    if (panelStore.my.panels.length < 2) return;
+    const newPanels = [...panelStore.my.panels];
+    newPanels.splice(index, 1);
+
+    panelStore.set("panels", newPanels);
+  }
+
+  function edit() {
+    panelStore.set("editingIndex", index);
+  }
+
+  if (!data) return "";
+
+  if (editingIndex === index) {
+    return (
+      <EditPanel
+        index={index}
+        editingIndex={editingIndex}
+        panelStore={panelStore}
+      />
+    );
+  }
+
+  return (
+    <Card pad={0} height="300px">
+      <CardHead>
+        {editingIndex < 0 && <Edit onClick={() => edit(index)} size="small" />}
+        <Text fill="horizontal" color="black" weight="bold">
+          {data.title}
+        </Text>
+        {editingIndex < 0 && (
+          <Close size="small" color="status-error" onClick={deleteMe} />
+        )}
+      </CardHead>
+      <CardBody fill pad="6px 10px" overflow="auto">
+        {data.content}
+      </CardBody>
+      <CardFooter></CardFooter>
+    </Card>
+  );
+};

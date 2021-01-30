@@ -1,0 +1,13 @@
+import { ValueMapStream } from "@wonderlandlabs/looking-glass-engine";
+
+export default () => {
+  return new ValueMapStream({
+    panels: [
+      { title: "alpha panel", content: "alpha panel content" },
+      { title: "beta panel", content: "beta panel content" },
+      { title: "gamma panel", content: "gamma panel content" }
+    ],
+    editingIndex: -1,
+    addingPanel: false,
+  });
+};

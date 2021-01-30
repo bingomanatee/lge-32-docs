@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="670px" height="97px" viewBox="0 0 670 97" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="4.56306013%" x2="100%" y2="31.9667175%" id="linearGradient-1">
+            <stop stop-color="#A741A1" offset="0%"></stop>
+            <stop stop-color="#6C2291" offset="41.1256239%"></stop>
+            <stop stop-color="#3F0B7D" offset="64.5263829%"></stop>
+            <stop stop-color="#000000" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo" transform="translate(-14.000000, -6.000000)">
+            <g id="L" transform="translate(13.996711, 11.921875)" fill="#0279C0">
+                <path d="M0,0 L24.2105263,9.77781508 C24.2105263,45.8075821 24.2105263,63.8224657 24.2105263,63.8224657 C24.2105263,63.8224657 40.3508772,67.6150727 72.6315789,75.2002869 L72.6315789,91.0225694 L0,79.4613348 L0,0 Z" id="Path"></path>
+            </g>
+            <g id="L" transform="translate(43.314145, 6.055556)" fill="#FE7500">
+                <path d="M0,0 L17.0230263,9.77781508 C17.0230263,45.8075821 17.0230263,63.8224657 17.0230263,63.8224657 C17.0230263,63.8224657 28.3717105,67.6150727 51.0690789,75.2002869 L51.0690789,91.0225694 L0,79.4613348 L0,0 Z" id="Path"></path>
+            </g>
+        </g>
+        <text id="LOOKING-GLASS-ENGINE" class="logo-head" font-family="KapraNeue-BlackExpanded, Kapra Neue" font-size="60" font-style="expanded" font-weight="700" fill="#FFFFFF"
+        style="text-shadow: 9px 5px 8px rgba(0,0,0,0.50);"
+        >
+            <tspan x="66" y="64">LOOKING GLASS ENGINE</tspan>
+        </text>
+    </g>
+</svg>

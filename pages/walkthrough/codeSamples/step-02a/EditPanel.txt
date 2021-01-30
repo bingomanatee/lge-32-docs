@@ -1,0 +1,38 @@
+import { Card, CardBody, CardFooter, Form, Button } from "grommet";
+import React, { useState } from "react";
+import { Close } from "grommet-icons";
+import EditField from "./EditField";
+import CardHead from "./CardHead";
+
+export default ({ index, panelStore, editingIndex }) => {
+  const [dataClone, setDataClone] = useState({
+    ...panelStore.my.panels[index]
+  });
+
+  function update(updated) {
+    panelStore.do.updatePanel(updated, index);
+  }
+
+  return (
+    <Form
+      value={dataClone}
+      onChange={setDataClone}
+      onSubmit={({ value }) => update(value)}
+    >
+      <Card pad={0} height="300px">
+        <CardHead>
+          <EditField name="title" label="title" />
+        </CardHead>
+        <CardBody fill pad="6px 10px" overflow="auto">
+          <EditField name="content" label="Content" textArea />
+        </CardBody>
+        <CardFooter pad="small">
+          <Button type="submit" size="small" primary label="Submit" />
+          <Button size="small" onClick={panelStore.do.close}>
+            <Close label="Cancel" size="small" />
+          </Button>
+        </CardFooter>
+      </Card>
+    </Form>
+  );
+};
