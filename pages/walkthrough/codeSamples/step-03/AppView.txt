@@ -1,0 +1,51 @@
+import React from "react";
+import Error from "./Error";
+
+export default ({ loginStream, submitState, username, password }) => (
+  <div className="App">
+    <h1>User Login Demo</h1>
+    <div className="field-row">
+      <label>Username</label>
+      <div className="field-row__input-cell">
+        <input
+          type="text"
+          disabled={submitState !== "entering"}
+          onChange={({ target }) =>
+            loginStream.fieldSubjects
+              .get("username")
+              .set("fieldValue", target.value)
+          }
+        />
+        <Error stream={loginStream.fieldSubjects.get("username")} />
+      </div>
+    </div>
+    <div className="field-row">
+      <label>Password</label>
+      <div className="field-row__input-cell">
+        <input
+          type="password"
+          disabled={submitState !== "entering"}
+          onChange={({ target }) =>
+            loginStream.fieldSubjects
+              .get("password")
+              .set("fieldValue", target.value)
+          }
+        />
+        <Error stream={loginStream.fieldSubjects.get("password")} />
+      </div>
+    </div>
+
+    <div className="button-row">
+      <div>
+        <button
+          className="send"
+          type="button"
+          disabled={!loginStream.do.canSubmit()}
+          onClick={loginStream.do.submit}
+        >
+          {submitState === "entering" ? "Log In" : submitState}
+        </button>
+      </div>
+    </div>
+  </div>
+);

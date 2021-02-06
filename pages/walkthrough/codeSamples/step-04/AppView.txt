@@ -1,0 +1,85 @@
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+import UserView from "./UserView";
+import Error from "./Error";
+
+export default function AppView({
+  loginStream,
+  user,
+  loginError,
+  username,
+  password,
+  submitState,
+  canSubmit
+}) {
+  if (!loginStream) return "";
+  return (
+    <div className="App">
+      <UserView signOut={loginStream.do.signOut} />
+      {!user && (
+        <>
+          <h1>User Login Demo</h1>
+          <div className="field-row">
+            <label>Username</label>
+            <div className="field-row__input-cell">
+              <input
+                type="text"
+                disabled={submitState !== "entering"}
+                onChange={({ target }) =>
+                  loginStream.fieldSubjects
+                    .get("username")
+                    .do.setFieldValue(target.value)
+                }
+              />
+              <Error stream={loginStream.fieldSubjects.get("username")} />
+            </div>
+          </div>
+          <div className="field-row">
+            <label>Password</label>
+            <div className="field-row__input-cell">
+              <input
+                type="password"
+                disabled={submitState !== "entering"}
+                onChange={({ target }) =>
+                  loginStream.fieldSubjects
+                    .get("password")
+                    .do.setFieldValue(target.value)
+                }
+              />
+              <Error stream={loginStream.fieldSubjects.get("password")} />
+            </div>
+          </div>
+
+          <div className="button-row">
+            <button
+              className="send"
+              type="button"
+              disabled={!canSubmit}
+              onClick={loginStream.do.submit}
+            >
+              {submitState === "entering" ? "Log In" : submitState}
+            </button>
+
+            <button
+              className="send"
+              type="button"
+              disabled={!canSubmit}
+              onClick={loginStream.do.register}
+            >
+              {submitState === "entering" ? "Sign Up" : submitState}
+            </button>
+          </div>
+          <div>
+            <small className="error">{loginError || ""}&nbsp;</small>
+          </div>
+          <p>
+            <small>
+              You can test login with user <code>alpha@beta.com</code>, password{" "}
+              <code>alphaBeta</code>
+            </small>
+          </p>
+        </>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,61 @@
+import {
+  ValueMapStream,
+  addActions
+} from "@wonderlandlabs/looking-glass-engine";
+
+import firebase from "./firebaseUtil";
+
+export const NOT_LOGGED_IN = "not logged in";
+export const LOGGING_IN = "logging in";
+export const REGISTERING = "registering";
+export const LOGGED_IN = "logged in";
+
+const userStore = addActions(
+  new ValueMapStream({
+    user: null,
+    status: NOT_LOGGED_IN,
+    loginError: null
+  }),
+  {
+    async logIn(store, username, password) {
+      store.do.setLoginError("");
+      store.do.setStatus(LOGGING_IN);
+      console.log("logging in with ", username, password);
+
+      try {
+        let { user } = await firebase.doSignInWithEmailAndPassword(
+          username,
+          password
+        );
+        store.do.setUser(user);
+        store.do.setStatus(LOGGED_IN);
+      } catch (error) {
+        store.do.setLoginError(error.message);
+        store.do.setStatus(NOT_LOGGED_IN);
+      }
+    },
+    async register(store, username, password) {
+      store.do.setLoginError("");
+      store.do.setStatus(LOGGING_IN);
+      try {
+        let { user } = await firebase.doCreateUserWithEmailAndPassword(
+          username,
+          password
+        );
+        console.log("user returned:", user);
+        store.do.setUser(user);
+        store.do.setStatus(LOGGED_IN);
+      } catch (error) {
+        store.do.setLoginError(error.message);
+        store.do.setStatus(NOT_LOGGED_IN);
+      }
+    },
+    signOut(store) {
+      firebase.doSignOut();
+      store.do.setStatus(NOT_LOGGED_IN);
+      store.do.setUser(false);
+    }
+  }
+);
+
+export default userStore;

@@ -15,7 +15,7 @@ export default () => (
     </Head>
     <article>
       <h1>Walkthrough</h1>
-      <h2>Step one: Working with a ValueStream.</h2>
+      <h2>Working with a ValueStream.</h2>
 
       <p>We're going to develop a dashboard using Looking-glass-engine.</p>
 

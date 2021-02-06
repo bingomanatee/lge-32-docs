@@ -3,6 +3,8 @@ import Head        from "next/head";
 import Property    from "../../components/Property";
 import NextButton  from "../../components/NextButton";
 import CodeDisplay from "../../components/CodeDisplay";
+import App from './codeSamples/step-03/App.txt';
+import AppView from './codeSamples/step-03/AppView.txt';
 import fieldStore from './codeSamples/step-03/fieldStore.txt';
 import makeStore from './codeSamples/step-03/makeStore.txt';
 import makeStore2 from './codeSamples/step-03/makeStore_2.txt';
@@ -10,7 +12,7 @@ import makeStore2 from './codeSamples/step-03/makeStore_2.txt';
 export default () => (
   <Layout>
     <Head>
-      <title>LGE Walkthrough: page 1</title>
+      <title>LGE Walkthrough: page 3</title>
     </Head>
     <article>
       <h1>Walkthrough</h1>
@@ -43,21 +45,37 @@ export default () => (
 
       <iframe src="https://codesandbox.io/embed/runtime-butterfly-eoplv?fontsize=14&hidenavigation=1&theme=dark"
         style={{width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden'}}
-        title="User Login part 1"
+        title="User Login"
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
       ></iframe>
 
-      <p>The actual state management is done in "makeStore.js". This structure is unusual so let's break it down.</p>
+      <p>The actual state management is done in "makeStore.js". We're going to create it at the top level of the App and
+        pass its values down to the view. The actual properties of the store are kept in a map but we use the <code>object</code>
+      property of the store to communicate those values to the view as a POJO object.
+      </p>
 
+      <CodeDisplay>
+        {App}
+      </CodeDisplay>
+
+      <p>The actual view recieves the store, and its fields, as properties</p>
+
+      <CodeDisplay>
+        {AppView}
+      </CodeDisplay>
+
+      <h2>The Controlling Store</h2>
       <ol>
         <li>The root state is a ValueStoreMap with two fields: username and password. It has a "mock submitter".
           <CodeDisplay>{makeStore}</CodeDisplay>
         </li>
         <li>
           Each field is a similar structure -- so we will <i>compose</i> other
-          ValueMapStreams with sub-values for each field:
-          <CodeDisplay>{makeStore2}
+          ValueMapStreams with fieldSubjects for each field. <code>fieldSubjects</code> are "sub-stores" that
+          transport their values into fields of a parent store. (Actually any RxJS stream can be used as a fieldSubject.)
+          <CodeDisplay>
+            {makeStore2}
           </CodeDisplay>
           This copies the value of sub-ValueStreams into the fields of the root stream. Because of this, we can
           define the sub-stream to meet reusable criteria -- in this case, the behavior of the "touched" field
@@ -84,7 +102,7 @@ export default () => (
       </div>
 
       <NextButton href={'/walkthrough/step-04'} prevHref={'/walkthrough/step-02a'}>
-        step 4
+        Step 4: Using a real login system
       </NextButton>
     </article>
   </Layout>)

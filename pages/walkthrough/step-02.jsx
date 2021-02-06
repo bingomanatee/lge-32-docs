@@ -19,7 +19,7 @@ export default () => (
     </Head>
     <article>
       <h1>Walkthrough</h1>
-      <h2>Step two: A panel editor</h2>
+      <h2>A panel editor</h2>
 
       <p>Next we're going to create a few sample panels and an editing suite.</p>
 

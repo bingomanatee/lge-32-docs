@@ -1,0 +1,128 @@
+import {
+  ValueMapStream,
+  addActions
+} from "@wonderlandlabs/looking-glass-engine";
+import fieldStore from "./fieldStore";
+import userStore, { LOGGED_IN, LOGGING_IN } from "./userStore";
+
+export default () => {
+  const lStream = addActions(
+    new ValueMapStream({
+      username: { fieldValue: "", error: "" }, // these are placeholders;
+      password: { fieldValue: "", error: "" }, // will be replaced by fieldStores
+      submitState: "entering"
+    }),
+    {
+      submit(lSelf) {
+        userStore.do.logIn(
+          lSelf.my.username.get("fieldValue"),
+          lSelf.my.password.get("fieldValue")
+        );
+        lSelf.do.setSubmitState("submitted");
+        lSelf.do.watchUser();
+      },
+      watchUser(lSelf) {
+        let done = false;
+        let sub;
+
+        function unsubscribe() {
+          if (sub) {
+            sub.unsubscribe();
+          }
+          done = true;
+        }
+
+        sub = userStore
+          .watch("status", "user", "loginError")
+          .subscribe((map) => {
+            console.log("watching user store:", map);
+            if (map.get("user")) unsubscribe();
+
+            if (map.get("status") === LOGGED_IN) {
+              lSelf.do.setSubmitState("logged in");
+              unsubscribe();
+            }
+
+            if (map.get("loginError")) {
+              lSelf.do.setSubmitState("entering");
+              unsubscribe();
+            }
+          });
+
+        if (done) {
+          sub.unsubscribe();
+        }
+      },
+      register(lSelf) {
+        userStore.do.register(
+          lSelf.my.username.get("fieldValue"),
+          lSelf.my.password.get("fieldValue")
+        );
+        lSelf.do.watchUser();
+      },
+      signOut(lSelf) {
+        userStore.do.signOut();
+        lSelf.do.reset();
+      },
+      clearSub(lSelf) {
+        if (lSelf.my.userSub) {
+          lSelf.my.userSub.unsubscribe();
+          lSelf.do.setUserSub(null);
+        }
+        lSelf.do.resetState();
+      },
+      resetState(lSelf) {
+        lSelf.do.setSubmitState("entering");
+      },
+      reset(lSelf) {
+        lSelf.do.clearSub();
+        lSelf.fieldSubjects.get("password").do.reset();
+        lSelf.fieldSubjects.get("username").do.reset();
+        lSelf.do.resetState();
+      },
+      canSubmit(store) {
+        return [
+          store.fieldSubjects.get("username"),
+          store.fieldSubjects.get("password")
+        ].reduce((can, stream) => {
+          return can && stream.do.isValid();
+        }, true);
+      }
+    }
+  );
+
+  lStream.addFieldSubject(
+    "username",
+    fieldStore((fieldValue, stream) => {
+      if (fieldValue.length < 1) {
+        return "username muse be present";
+      } else if (!/.+@.+\..+/.test(fieldValue)) {
+        return "username must be a proper e-mail address";
+      } else {
+        return "";
+      }
+    }, "username")
+  );
+
+  lStream.addFieldSubject(
+    "password",
+    fieldStore((fieldValue, stream) => {
+      if (fieldValue.length < 1) {
+        return "password muse be present";
+      } else if (fieldValue.length < 8) {
+        return "password muse be 8 or more characters";
+      } else if (/\s/.test(fieldValue)) {
+        return "password cannot have spaces";
+      } else {
+        return "";
+      }
+    }, "password")
+  );
+
+  lStream.watch("username", "password").subscribe(() => {
+    if (userStore.my.loginError) userStore.do.setLoginError("");
+  });
+
+
+  return lStream;
+};

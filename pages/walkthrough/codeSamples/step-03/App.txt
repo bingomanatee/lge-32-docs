@@ -1,0 +1,25 @@
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+import makeStore from "./makeStore";
+import AppView from "./AppView";
+
+export default function App() {
+  const [errors, setErrors] = useState({});
+
+  // this just provokes the view to refresh when the state changes
+  const [values, setValues] = useState(false);
+  const [loginStream, setLoginStream] = useState(null);
+
+  useEffect(() => {
+    const lStream = makeStore();
+
+    setLoginStream(lStream);
+    const sub = lStream.subscribe(setValues);
+
+    return () => sub.unsubscribe();
+  }, []);
+
+  if (!loginStream) return "";
+
+  return <AppView loginStream={loginStream} {...loginStream.object} />;
+}

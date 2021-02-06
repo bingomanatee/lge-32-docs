@@ -19,7 +19,7 @@ export default () => (
     </Head>
     <article>
       <h1>Walkthrough</h1>
-      <h2>Step two/a: A panel editor -- with actions</h2>
+      <h2>A panel editor -- with actions</h2>
 
       <p>Now, we can pull in the update methods to the store definition itself:</p>
 

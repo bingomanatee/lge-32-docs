@@ -1,0 +1,43 @@
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+import makeStore from "./loginStore";
+import userStore from "./userStore";
+
+import AppView from "./AppView";
+
+export default function App() {
+  // this just provokes the view to refresh when the state changes
+  const [values, setValues] = useState(false);
+  const [loginStream, setLoginStream] = useState(null);
+  const [loginError, setLoginError] = useState("");
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const sub = userStore.watch("user", "loginError").subscribe((map) => {
+      setUser(map.get("user"));
+      setLoginError(map.get("loginError"));
+    });
+    return () => sub.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const lStream = makeStore();
+
+    setLoginStream(lStream);
+    const sub = lStream.subscribe(setValues);
+
+    return () => sub.unsubscribe();
+  }, []);
+
+  if (!loginStream) return "";
+  console.log("rendering app:");
+  return (
+    <AppView
+      loginStream={loginStream}
+      {...loginStream.object}
+      canSubmit={loginStream.do.canSubmit()}
+      user={user}
+      loginError={loginError}
+    />
+  );
+}

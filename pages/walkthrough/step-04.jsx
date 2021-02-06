@@ -7,28 +7,22 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import CodeDisplay              from "../../components/CodeDisplay";
+import userStore from './codeSamples/step-04/userStore.txt';
+import App from './codeSamples/step-04/App.txt';
+import AppView from './codeSamples/step-04/AppView.txt';
 
 export default () => (
   <Layout>
     <Head>
-      <title>LGE walkthrough: page 2</title>
+      <title>LGE walkthrough: page 4</title>
     </Head>
     <article>
-      <h1>Walkthrough: step two: hooking into a real Firebase auth system.</h1>
+      <h1>Walkthrough</h1>
+
+      <h2>Hooking into a real Firebase auth system</h2>
 
       <p>Now that we have basic flow of information locally working lets have some fun
-        and hook up a real backend lSelf: Firebase Authentication.</p>
-
-      <p>The Firebase stuff is well documented by Google. The useful part for us is that we are creating a lSelf
-        that is NOT tied into react directly to interface with it and lSelf login state. This is one of
-        the nice features of Looking Glass -- you can have local stores that manage a web view,
-        or you can have static stores that are not tied to UI but that UI can listen to when it needs to.</p>
-
-      <h2>The <code>userStore</code></h2>
-
-      <div className="diagram">
-        <img src="/img/userStore.svg"/>
-      </div>
+        and hook up a real backend: Firebase Authentication.</p>
 
       <iframe src="https://codesandbox.io/embed/looking-glass-engine-login-demo-part-2-with-firebase-t84t4?fontsize=14&hidenavigation=1&theme=dark"
         style={{width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden'}}
@@ -37,7 +31,29 @@ export default () => (
         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
       ></iframe>
 
-      <p>The userStore is actually simpler than the form; it has three fields:</p>
+      <p>The streams we are going to create
+        are variations of our test login system that submit their values to Firebase. We'll add a userStore to manage
+      the user login/data seperately because that state we will want to persist longer and potentially
+      access in other contexts:</p>
+
+      <CodeDisplay>
+        {App}
+      </CodeDisplay>
+
+      <p>The view will recieve any login errors and the user as well:</p>
+
+      <CodeDisplay>
+        {AppView}
+      </CodeDisplay>
+
+      <h2>The <code>userStore</code></h2>
+
+      <div className="diagram">
+        <img src="/img/userStore.svg"/>
+      </div>
+
+      <p>The userStore communicates with firebases' auth layer and stores any user data returned from it, or error
+      codes on a failed signup/signin.</p>
       <Property>
         <h3>
           <code>user</code>
@@ -59,169 +75,23 @@ export default () => (
         </div>
       </Property>
 
-      <p>We aren't enforcing any schema on this structure at this point.</p>
-
       <h2>A Piece of the Action</h2>
       <p><img src={'/img/action.png'}  style={{width: 655/2, height: 624/2}} className="framedImage framedImage__right"/>
         The actions, register and signIn, are in fact essentially identical, but they call a different firebase
         endpoint.
         They are asynchronous, and you don't have to freak. Unlike Redux actions, looking glass actions are completely
-        free to interact with the lSelf at their own tempo. They can call set or other actions of the lSelf to update
+        free to interact with the store at their own tempo. They can call set or other actions of the store to update
         values, and can do so even across an async jump.
       </p>
 
-      <div style={{backgroundColor: 'black'}}>
-        <Code highlight={code => highlight(code, languages.js)}
-          padding={10}
-          style={{
-            fontFamily: '"Fira code", "Fira Mono", monospace',
-            fontSize: '1rem',
-            color: 'white'
-          }} value={`
-actions: {
-  async logIn(lSelf, username, password) {
-    lSelf.do.setLoginError("");
-    lSelf.do.setStatus(LOGGING_IN);
-    try {
-      let { user } = await firebase.doSignInWithEmailAndPassword(
-        username,
-        password
-      );
-      lSelf.do.setUser(user);
-      lSelf.do.setStatus(LOGGED_IN);
-    } catch (error) {
-      lSelf.do.setLoginError(error.message);
-      lSelf.do.setStatus(NOT_LOGGED_IN);
-    }
-  },
- //....
- }
-          `}>
-        </Code>
-      </div>
+      <CodeDisplay>{userStore}
+      </CodeDisplay>
 
-      <p>Now we add actions that pass the field values into the user lSelf to login or subscribe through the userStore.</p>
+      <p>Now we add actions that pass the field values into the user lSelf to login or subscribe through the userStore.
+      Because the store is a provided resource, like any other code library, the stores can talk to each other
+      and monitor their values</p>
 
-
-<CodeDisplay>{`
- const lStream = new ValueStoreMap(
-    {
-      username: { fieldValue: "", error: "" }, // these are placeholders;
-      password: { fieldValue: "", error: "" }, // will be replaced by fieldStores
-      canSubmit: false,
-      submitState: "entering",
-      loginError: "",
-      user: false,
-      storeSub: null
-    },
-    {
-      actions: {
-        submit(lSelf) {
-          userStore.do.logIn(
-            lSelf.my.username.fieldValue,
-            lSelf.my.password.fieldValue
-          );
-          lSelf.do.watchUser();
-        },
-        register(lSelf) {
-          userStore.do.register(
-            lSelf.my.username.fieldValue,
-            lSelf.my.password.fieldValue
-          );
-          lSelf.do.watchUser();
-        },
-        signOut(lSelf) {
-          userStore.do.signOut();
-          lSelf.do.setUser(false);
-          lSelf.do.reset();
-        },
-        clearSub(lSelf) {
-          if (lSelf.my.userSub) {
-            lSelf.my.userSub.unsubscribe();
-            lSelf.do.setUserSub(null);
-          }
-          lSelf.do.resetState();
-        },
-        resetState(lSelf) {
-          lSelf.do.setSubmitState("entering");
-          lSelf.do.setUser(false);
-          lSelf.do.setCanSubmit(false);
-          lSelf.do.setLoginError("");
-        },
-        reset(lSelf) {
-          lSelf.do.clearSub();
-          lSelf.streams.get("password").do.reset();
-          lSelf.streams.get("username").do.reset();
-          lSelf.do.resetState();
-        }
-      }
-    }
-  );
-`}</CodeDisplay>
-      <p>And we keep the field definition from the previous example:</p>
-<CodeDisplay>{`
-  lStream.addStream(
-    "username",
-    fieldStore((fieldValue, stream) => {
-      if (fieldValue.length < 1) {
-        stream.do.setError("username muse be present");
-      } else if (!/.+@.+\\..+/.test(fieldValue)) {
-        stream.do.setError("username must be a proper e-mail address");
-      } else {
-        stream.do.setError("");
-      }
-    })
-  );
-
-  lStream.addStream(
-    "password",
-    fieldStore((fieldValue, stream) => {
-      if (fieldValue.length < 1) {
-        stream.do.setError("password muse be present");
-      } else if (fieldValue.length < 10) {
-        stream.do.setError("password muse be 10 or more characters");
-      } else if (/\\s/.test(fieldValue)) {
-        stream.do.setError("password cannot have spaces");
-      } else {
-        stream.do.setError("");
-      }
-    })
-  );
-          `}
-        </CodeDisplay>
-      <p>Also, we have the loginStore listen to the userStore and update select properties.
-        Separate watching reduces unnecessary updates. </p>
-
-<CodeDisplay>{`
-  const userWatch = userStore.watch("user").subscribe((map) => {
-    lStream.do.setUser(map.get("user"));
-  });
-
-  const errorWatch = userStore.watch("loginError").subscribe((map) => {
-    const loginError = map.get("loginError");
-    if (lStream.my.loginError !== loginError) {
-      if (loginError) {
-        lStream.do.resetState();
-      }
-      lStream.do.setLoginError(loginError);
-    }
-  });
-
-  lStream.subscribe(
-    () => {},
-    () => {},
-    () => {
-      errorWatch.unsubscribe();
-      statusWatch.unsubscribe();
-      userWatch.unsubscribe();
-    }
-  );
-          `}</CodeDisplay>
-
-      <p>note because the userStore has a long lifespan and the loginStore might not, we turn off the listening relationship
-      when the loginStore is completed.</p>
-
-      <NextButton href={'/walkthrough/step-03'} prevHref={'/walkthrough/step-01'}>
+      <NextButton href={'/walkthrough/step-05'} prevHref={'/walkthrough/step-03'}>
         Now that we're in lets have some fun
       </NextButton>
     </article>
