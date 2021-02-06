@@ -1,9 +1,9 @@
 import Head                  from 'next/head'
 import styles                from './../styles/Home.module.css'
 import Link                  from 'next/link'
-import Layout, { siteTitle } from './../components/layout'
-import utilStyles            from './../styles/utils.module.css'
-import NextButton            from "./../components/NextButton";
+import Layout, { siteTitle } from '../components/Layout'
+import utilStyles            from '../styles/utils.module.css'
+import NextButton            from "../components/NextButton";
 
 export default function Home() {
   return (
