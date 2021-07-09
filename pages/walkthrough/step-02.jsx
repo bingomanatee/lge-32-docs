@@ -28,7 +28,7 @@ export default () => (
       <h2>The <code>ValueMapStream</code></h2>
 
       <p>A ValueMapStream is a multi-value stream; it has an internal map whose members can be stored and updated by name.</p>
-      <iframe src="https://codesandbox.io/embed/looking-glass-engine-panel-set-h83sy?fontsize=14&hidenavigation=1&theme=dark"
+      <iframe src="https://codesandbox.io/embed/looking-glass-engine-panel-set-h83sy?codemirror=1&fontsize=14&hidenavigation=1&theme=dark"
         style={{width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden'}}
         title="looking glass engine - login demo part 2 - panels"
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -82,7 +82,7 @@ export default () => (
         {EditPanel}
       </CodeDisplay>
 
-      <p>This code lacks any ornament for reducers or actions; the proerties are set or updated on the fly
+      <p>This code lacks any ornament for reducers or actions; the properties are set or updated on the fly
         by the <code>store.set(key, value)</code> method. However there is another tool we can use to further
       compress the code into a more managed system: store actions</p>
 

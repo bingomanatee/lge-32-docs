@@ -6,6 +6,8 @@ function MyApp({ Component, pageProps }) {
     <Head>
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet" />
+
+      <link rel="stylesheet" type="text/css" href="/KapraNeue/KapraNeue.css"/>
     </Head>
     <Component {...pageProps} />
     </>

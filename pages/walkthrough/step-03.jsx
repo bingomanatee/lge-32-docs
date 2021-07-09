@@ -43,7 +43,7 @@ export default () => (
       <p>However -- the store has to accept whatever value the user enters, and note errors as they occur - ONCE the
         user changes the field. </p>
 
-      <iframe src="https://codesandbox.io/embed/runtime-butterfly-eoplv?fontsize=14&hidenavigation=1&theme=dark"
+      <iframe src="https://codesandbox.io/embed/runtime-butterfly-eoplv?codemirror=1&fontsize=14&hidenavigation=1&theme=dark"
         style={{width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden'}}
         title="User Login"
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"

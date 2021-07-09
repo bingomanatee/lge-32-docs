@@ -53,9 +53,8 @@ and any additional arguments are passed through. They don't require binding, so 
         {EditPanel}
       </CodeDisplay>
 
-      <p>So you can see, instead of verbose action setters for each data update we simply set
-        the values we want into the central store; however, there is another shortcut available,
-        in-built actions for custom execution, that can further clean up this cycle.</p>
+      <p>So instead of verbose action setters for each data update we simply set
+        the values we want into the central store.</p>
 
       <NextButton href={'/walkthrough/step-03'}>
         Let's log in

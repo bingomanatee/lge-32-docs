@@ -3,9 +3,12 @@ xport default ({ index, store: panelStore }) => {
   const [data, setData] = useState(panelStore.my.panels[index]);
 
   useEffect(() => {
-    const sub = panelStore.watch('editingIndex').subscribe((map) => {
+    const sub = panelStore.subscribe((map) => {
       if (map.get("editingIndex") !== editingIndex) {
         setEditingIndex(map.get("editingIndex"));
+      }
+      if (map.get("panels")[index] !== data) {
+        setData(map.get("panels")[index]);
       }
     });
     return () => sub.unsubscribe();

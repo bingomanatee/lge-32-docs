@@ -1,0 +1,28 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 4122936, 2021-07-08T21:41:10-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: KapraNeue-BlackExpanded by Typoforge Studio
+ * URL: https://www.myfonts.com/fonts/blazej-ostoja-lniski/kapra-neue/black-expanded/
+ * Copyright: Copyright (c) 2017 by B&amp;#x0142;a&amp;#x017C;ej Ostoja Lniski. All rights reserved.
+ *
+ *
+ *
+ * © 2021 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/3ee938");
+
+@font-face {
+  font-family: "KapraNeue-BlackExpanded";
+  src: url('public/KapraNeue/webFonts/KapraNeueBlackExpanded/font.woff2') format('woff2'), url('public/KapraNeue/webFonts/KapraNeueBlackExpanded/font.woff') format('woff');
+}
+

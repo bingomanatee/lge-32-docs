@@ -91,8 +91,8 @@ export default () => (
       Because the store is a provided resource, like any other code library, the stores can talk to each other
       and monitor their values</p>
 
-      <NextButton href={'/walkthrough/step-05'} prevHref={'/walkthrough/step-03'}>
-        Now that we're in lets have some fun
+      <NextButton href={'/'} prevHref={'/walkthrough/step-03'}>
+        Done with examples
       </NextButton>
     </article>
   </Layout>)

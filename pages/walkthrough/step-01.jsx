@@ -25,7 +25,7 @@ export default () => (
       <h2>The <code>ValueStream</code></h2>
 
       <p>A ValueStream is a single-value stream; it is in reality a lot like a <a>BehaviorSubject</a> in RXJS</p>
-      <iframe src="https://codesandbox.io/embed/charting-example-g04kc?fontsize=14&hidenavigation=1&theme=dark"
+      <iframe src="https://codesandbox.io/embed/charting-example-g04kc?codemirror=1&fontsize=14&hidenavigation=1&theme=dark"
         style={{width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden'}}
         title="looking glass engine - login demo part 1 - a simple graph"
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
