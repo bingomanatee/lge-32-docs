@@ -23,6 +23,6 @@
 
 @font-face {
   font-family: "KapraNeue-BlackExpanded";
-  src: url('public/KapraNeue/webFonts/KapraNeueBlackExpanded/font.woff2') format('woff2'), url('public/KapraNeue/webFonts/KapraNeueBlackExpanded/font.woff') format('woff');
+  src: url('/KapraNeue/webFonts/KapraNeueBlackExpanded/font.woff2') format('woff2'), url('/KapraNeue/webFonts/KapraNeueBlackExpanded/font.woff') format('woff');
 }
 
