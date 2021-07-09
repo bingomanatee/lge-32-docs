@@ -29,8 +29,8 @@ export default function Home() {
          <li>Unit Testing Redux-controlled components is difficult or impossible </li>
        </ul>
        <h2>RXJS is part of the solution</h2>
-       <p>RXJS has many solutions to these problems but it is so open-ended and profuse that it is difficult to
-       know what steps you need to do do generate useful stores. Also, adding <i>methods</i> to a stream
+       <p>RXJS has many solutions to these problems. Its streaming and update system is mutable and powerful.
+         But its a generalized solution, and adding <i>methods</i> to a stream
        are not really part of the paradigm. </p>
        <h2>The Looking Glass Paradigm</h2>
        <ul>
@@ -55,6 +55,10 @@ export default function Home() {
          <li>
            LGE stores are <b>composable</b>. You can design sub-stores and feed them into higher level collections
            through <code>fieldSubjects</code>.
+         </li>
+         <li>
+           Stores can be used <b>locally or globally</b>. Stores can be exposed as imported modules or instantiated
+           inside a components' lifespan
          </li>
        </ul>
 

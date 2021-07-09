@@ -13,10 +13,8 @@ export default class MyCustomDocument extends Document {
     return (
       <html>
       <Head>
-        <title>Looking Glass Sample</title>
         {this.props.styleTags}
         <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
-
       </Head>
       <body>
       <Main />

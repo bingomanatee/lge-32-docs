@@ -1,3 +1,5 @@
+@import "prism.css";
+@import "KapraNeue/KapraNeue.css";
 html,
 body {
   padding: 0;
@@ -150,8 +152,6 @@ code {
   float: right;
 }
 
-@import "prism.css";
-
 .link {
   font-family: 'Roboto Slab', sans-serif;
   font-weight: 500;
@@ -164,4 +164,8 @@ code {
       color: darkcyan;
     }
   }
+}
+
+.logo-head, #logo-text, .logo-head tspan {
+  font-family: "Kapra Neue", Oswald, sans-serif !important;
 }

@@ -10,6 +10,19 @@
             <stop stop-color="#3F0B7D" offset="64.5263829%"></stop>
             <stop stop-color="#000000" offset="100%"></stop>
         </linearGradient>
+        <style type="text/css">@font-face {
+            @import url("//hello.myfonts.net/count/3ee94f");
+
+            @font-face {
+            font-family: "KapraNeue-BlackExpanded";
+            src:  local('☺'),url('/KapraNeue/webFonts/KapraNeueBlackExpanded/font.woff') format('woff');
+            }
+
+            @font-face {
+            font-family: "Kapra Neue";
+            src: local('☺'),url('/KapraNeue/webFonts/KapraNeueBlackExpanded/font.woff') format('woff');
+            }
+            }</style>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="logo" transform="translate(-14.000000, -6.000000)">

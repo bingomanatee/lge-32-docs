@@ -4,10 +4,10 @@ import utilStyles    from '../styles/utils.module.css'
 import Link          from 'next/link'
 import Header        from '../components/Header';
 import { useRouter } from "next/router";
+import Logo from "./Logo";
 const name = 'Your Name'
 export const siteTitle = 'Next.js Sample Website'
 
-console.log('--- styles: ', styles)
 export default function Layout({ children, home }) {
   const router = useRouter();
 
@@ -26,7 +26,7 @@ export default function Layout({ children, home }) {
       <div className={styles['container-head']} />
       <div className={styles['container-accent']} />
       <Header onClick={() => router.push('/')}>
-        <img src="/img/logo.svg" />
+        <Logo />
       </Header>
       <main>{children}</main>
       {!home && (
