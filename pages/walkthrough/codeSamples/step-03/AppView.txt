@@ -11,9 +11,7 @@ export default ({ loginStream, submitState, username, password }) => (
           type="text"
           disabled={submitState !== "entering"}
           onChange={({ target }) =>
-            loginStream.fieldSubjects
-              .get("username")
-              .set("fieldValue", target.value)
+            loginStream.fieldSubjects.get('username').do.setFieldValue(target.value)
           }
         />
         <Error stream={loginStream.fieldSubjects.get("username")} />
@@ -26,9 +24,7 @@ export default ({ loginStream, submitState, username, password }) => (
           type="password"
           disabled={submitState !== "entering"}
           onChange={({ target }) =>
-            loginStream.fieldSubjects
-              .get("password")
-              .set("fieldValue", target.value)
+            loginStream.fieldSubjects.get('password').do.setFieldValue(target.value)
           }
         />
         <Error stream={loginStream.fieldSubjects.get("password")} />
